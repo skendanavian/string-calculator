@@ -32,6 +32,10 @@ const testCase13 = "//;;;;;;;<<\n3;;;;;;;<<2;;;;;;;<<3"; // expect 8
 const testCase14 = "//$,@\n1$2@3"; // expect 6
 const testCase15 = "//$,@,*,#\n1*2#6$2@3"; // expect 14
 
+// Bonus 4 - Allow multiple delimiters of arbitrary length
+const testCase16 = "//$$,@@@\n1$$2@@@3"; // expect 6
+const testCase17 = "//$$$$$,@,**,#\n1**2#6$$$$2@3"; // expect 14
+
 describe("Part 1 - Comma Delimiter and Empty Strings return 0", function () {
 	it("should add the numbers in the string correctly and return an integer", () => {
 		expect(add(testCase1)).to.equal(8);
@@ -100,5 +104,13 @@ describe("Bonus 3 - Allow Multiple Delimiters", function () {
 	});
 	it("should sum the numbers correctly with multiple delimiters provided", () => {
 		expect(add(testCase15)).to.equal(14);
+	});
+});
+describe("Bonus 4 - Allow Multiple Delimiters of arbitrary length", function () {
+	it("should sum the numbers correctly with multiple delimiters provided", () => {
+		expect(add(testCase16)).to.equal(6);
+	});
+	it("should sum the numbers correctly with multiple delimiters provided", () => {
+		expect(add(testCase17)).to.equal(14);
 	});
 });
