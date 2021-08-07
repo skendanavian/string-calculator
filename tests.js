@@ -20,9 +20,12 @@ const testCase7 = "//;\n1;3;4"; //expect 8
 const testCase8 = "//;\n1;-5;-2"; // expect negative number exception
 const testCase9 = "//;\n1;9;-1"; // expect negative number exception
 
-// Bonus 1
+// Bonus 1 - exclude numbers above 1000
 const testCase10 = "//;\n1;5;1001"; // expect 6
 const testCase11 = "//;\n1;5;1000"; // expect 1006
+// Bonus 2 - delimiters can be arbitrary length
+const testCase12 = "//***\n1***2***3"; // expect 6
+const testCase13 = "//;;;;;;;<<\n3;;;;;;;<<2;;;;;;;<<3"; // expect 8
 
 describe("Part 1 - Comma Delimiter and Empty Strings return 0", function () {
 	it("should add the numbers in the string correctly and return an integer", () => {
@@ -64,11 +67,20 @@ describe("Part 4 - Negative Numbers throw and exception with the list of negativ
 		);
 	});
 });
+
 describe("Bonus 1 - Do not include numbers above 1000 in the sum", function () {
 	it("should include the number 1000 in the sum", () => {
 		expect(add(testCase10)).to.equal(6);
 	});
 	it("should not include the number 1001 in the sum", () => {
 		expect(add(testCase11)).to.equal(1006);
+	});
+});
+describe("Bonus 2 - Delimiters can be of arbitrary length", function () {
+	it("should sum the numbers correctly with multi-length delimiters", () => {
+		expect(add(testCase12)).to.equal(6);
+	});
+	it("should sum the numbers correctly with multi-length delimiters", () => {
+		expect(add(testCase13)).to.equal(8);
 	});
 });
