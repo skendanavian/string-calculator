@@ -1,6 +1,8 @@
 const add = (string) => {
 	if (!string) return 0;
 
+	// //$,@\n1$2@3
+
 	// Defaults
 	let delimiter = ",";
 	let numString = string;
@@ -9,7 +11,25 @@ const add = (string) => {
 	// Handle custom delimiter cases when beginning with '//'
 	if (string.slice(0, 2) === "//") {
 		const splitDelimiter = string.split("\n");
+
 		delimiter = splitDelimiter[0].slice(2);
+
+		//handle multiple delimiters
+
+		if (delimiter.split(",").length > 1) {
+			//separated outer parts of inner regexp to splice inner conditions into
+			const regExpInnerArray = ["[", "]+"];
+
+			delimiter.split(",").map((item, i) => {
+				// add each delimiter to regexp array
+				regExpInnerArray.splice(1 + i, 0, `${item}| `);
+			});
+
+			// join the inner regexp parts and generate regexp with multiple delimiters
+			const generateRegExp = new RegExp(regExpInnerArray.join(""));
+			delimiter = generateRegExp;
+		}
+
 		numString = splitDelimiter[1];
 	}
 
