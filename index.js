@@ -1,7 +1,8 @@
 // Step 1
 
 const addString = (string) => {
-	console.log(string);
+	if (!string) return 0;
+
 	const numArray = string.split(",");
 	const sum = numArray.reduce(function addNumbers(sum, num) {
 		return sum + parseInt(num, 10);
@@ -10,5 +11,3 @@ const addString = (string) => {
 };
 
 module.exports = addString;
-
-addString("1,2,5");
