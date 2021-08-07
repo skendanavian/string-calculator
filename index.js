@@ -1,14 +1,13 @@
 const add = (string) => {
 	if (!string) return 0;
 
-	// //$,@\n1$2@3
+	// Default Value Declarations
 
-	// Defaults
 	let delimiter = ",";
 	let numString = string;
-	let negativeNumList = [];
+	const negativeNumList = [];
 
-	// Handle custom delimiter cases when beginning with '//'
+	// Handle custom delimiter cases when string begins with '//'
 	if (string.slice(0, 2) === "//") {
 		const splitDelimiter = string.split("\n");
 
@@ -38,13 +37,15 @@ const add = (string) => {
 
 	// Sum the numbers from the array
 	const sum = numArray.reduce(function addNumbers(sum, num) {
+		// convert string to integer
 		const number = parseInt(num, 10);
 
-		// do not allow negative numbers -> push to array for later
+		// do not allow negative numbers -> push to array to be used later
 		if (number < 0) negativeNumList.push(num);
+		// do not include numbers above 1000 in the sum
 		if (number > 1000) return sum;
 
-		return sum + parseInt(num, 10);
+		return sum + number;
 	}, 0);
 
 	// Handle negative number case
@@ -56,8 +57,7 @@ const add = (string) => {
 
 module.exports = { add };
 
-// Originally thought each step was to be separated into different functions.
-// Ended up refactoring into one function to handle all cases. The original code has been commented out below for reference.
+// I originally thought that each step was to be separated into a different function. This original logic is below for reference.
 
 // Part 1 - Add numbers in string using ',' as delimiter.
 
