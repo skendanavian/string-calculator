@@ -26,8 +26,6 @@ npm test
 npm start
 ```
 
-\*\* If you are experiencing problems: try switching to node version 12.22.1
-
 ## Project Requirements
 
 General Instructions
