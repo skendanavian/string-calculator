@@ -22,6 +22,7 @@ const add = (string) => {
 
 		// do not allow negative numbers -> push to array for later
 		if (number < 0) negativeNumList.push(num);
+		if (number > 1000) return sum;
 
 		return sum + parseInt(num, 10);
 	}, 0);
