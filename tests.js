@@ -6,7 +6,7 @@ const addString = require("./index");
 const testCase1 = "1,2,5"; //expect 8
 const testCase2 = ""; // expect 0
 
-describe("sum", function () {
+describe("Add the numbers in the string", function () {
 	it("should add the numbers in the string", () => {
 		expect(addString(testCase1)).to.equal(8);
 	});
