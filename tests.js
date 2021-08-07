@@ -7,50 +7,52 @@ const { add, addString1, addString2, addString3 } = require("./index");
 const testCase1 = "1,2,5"; // expect 8
 const testCase2 = ""; // expect 0
 
-describe("Part 1 - Comma Delimiter", function () {
-	it("should add the numbers in the string correctly and return an integer", () => {
-		expect(addString1(testCase1)).to.equal(8);
-	});
-	it("should return 0 when given an empty string as input", () => {
-		expect(addString1(testCase2)).to.equal(0);
-	});
-});
+// describe("Part 1 - Comma Delimiter", function () {
+// 	it("should add the numbers in the string correctly and return an integer", () => {
+// 		expect(addString1(testCase1)).to.equal(8);
+// 	});
+// 	it("should return 0 when given an empty string as input", () => {
+// 		expect(addString1(testCase2)).to.equal(0);
+// 	});
+// });
 
 // Part 2
 const testCase3 = "1\n,2,3"; // expect 6
 const testCase4 = "1,\n2,4"; // expect 7
 
-describe("Part 2 - Comma and newline delimiter", function () {
-	it("should add the numbers in the string correctly and return an integer", () => {
-		expect(addString2(testCase3)).to.equal(6);
-	});
-	it("should add the numbers in the string correctly and return an integer", () => {
-		expect(addString2(testCase4)).to.equal(7);
-	});
-	it("should return 0 when given an empty string as input", () => {
-		expect(addString2(testCase2)).to.equal(0);
-	});
-});
+// describe("Part 2 - Comma and newline delimiter", function () {
+// 	it("should add the numbers in the string correctly and return an integer", () => {
+// 		expect(addString2(testCase3)).to.equal(6);
+// 	});
+// 	it("should add the numbers in the string correctly and return an integer", () => {
+// 		expect(addString2(testCase4)).to.equal(7);
+// 	});
+// 	it("should return 0 when given an empty string as input", () => {
+// 		expect(addString2(testCase2)).to.equal(0);
+// 	});
+// });
 
 // Part 3
 const testCase5 = "//$\n1$2$3"; // expect 6
 const testCase6 = "//@\n2@3@8"; // expect 13
 const testCase7 = "//;\n1;3;4"; //expect 8
+const testCase8 = "//;\n1;-5;-2"; // expect negative number exception
+const testCase9 = "//;\n1;9;-1"; // expect negative number exception
 
-describe("Part 3 - Custom delimiter ", function () {
-	it("should add the numbers in the string correctly and return an integer", () => {
-		expect(addString3(testCase5)).to.equal(6);
-	});
-	it("should add the numbers in the string correctly and return an integer", () => {
-		expect(addString3(testCase6)).to.equal(13);
-	});
-	it("should add the numbers in the string correctly and return an integer", () => {
-		expect(addString3(testCase6)).to.equal(13);
-	});
-	it("should return 0 when given an empty string as input", () => {
-		expect(addString3(testCase2)).to.equal(0);
-	});
-});
+// describe("Part 3 - Custom delimiter ", function () {
+// 	it("should add the numbers in the string correctly and return an integer", () => {
+// 		expect(addString3(testCase5)).to.equal(6);
+// 	});
+// 	it("should add the numbers in the string correctly and return an integer", () => {
+// 		expect(addString3(testCase6)).to.equal(13);
+// 	});
+// 	it("should add the numbers in the string correctly and return an integer", () => {
+// 		expect(addString3(testCase6)).to.equal(13);
+// 	});
+// 	it("should return 0 when given an empty string as input", () => {
+// 		expect(addString3(testCase2)).to.equal(0);
+// 	});
+// });
 
 describe("Combined All Cases", function () {
 	it("should add the numbers in the string correctly and return an integer", () => {
@@ -72,7 +74,18 @@ describe("Combined All Cases", function () {
 	it("should add the numbers in the string correctly and return an integer", () => {
 		expect(add(testCase6)).to.equal(13);
 	});
+
 	it("should add the numbers in the string correctly and return an integer", () => {
-		expect(add(testCase6)).to.equal(13);
+		expect(add(testCase7)).to.equal(8);
+	});
+	it("should throw an exception with the negative number(s) when there is a negative number in the group", () => {
+		expect(add(testCase8)).to.equal(
+			"Negatives not allowed. The string contained -5, -2"
+		);
+	});
+	it("should throw an exception with the negative number(s) when there is a negative number in the group", () => {
+		expect(add(testCase9)).to.equal(
+			"Negatives not allowed. The string contained -1"
+		);
 	});
 });
