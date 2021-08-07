@@ -1,7 +1,7 @@
 const chai = require("chai");
 const expect = chai.expect;
 
-const { addString1, addString2, addString3 } = require("./index");
+const { add, addString1, addString2, addString3 } = require("./index");
 
 // Part 1
 const testCase1 = "1,2,5"; // expect 8
@@ -24,20 +24,55 @@ describe("Part 2 - Comma and newline delimiter", function () {
 	it("should add the numbers in the string correctly and return an integer", () => {
 		expect(addString2(testCase3)).to.equal(6);
 	});
-	it("should return 0 when given an empty string as input", () => {
+	it("should add the numbers in the string correctly and return an integer", () => {
 		expect(addString2(testCase4)).to.equal(7);
+	});
+	it("should return 0 when given an empty string as input", () => {
+		expect(addString2(testCase2)).to.equal(0);
 	});
 });
 
 // Part 3
 const testCase5 = "//$\n1$2$3"; // expect 6
 const testCase6 = "//@\n2@3@8"; // expect 13
+const testCase7 = "//;\n1;3;4"; //expect 8
 
 describe("Part 3 - Custom delimiter ", function () {
 	it("should add the numbers in the string correctly and return an integer", () => {
 		expect(addString3(testCase5)).to.equal(6);
 	});
-	it("should return 0 when given an empty string as input", () => {
+	it("should add the numbers in the string correctly and return an integer", () => {
 		expect(addString3(testCase6)).to.equal(13);
+	});
+	it("should add the numbers in the string correctly and return an integer", () => {
+		expect(addString3(testCase6)).to.equal(13);
+	});
+	it("should return 0 when given an empty string as input", () => {
+		expect(addString3(testCase2)).to.equal(0);
+	});
+});
+
+describe("Combined All Cases", function () {
+	it("should add the numbers in the string correctly and return an integer", () => {
+		expect(add(testCase1)).to.equal(8);
+	});
+	it("should return 0 when given an empty string as input", () => {
+		expect(add(testCase2)).to.equal(0);
+	});
+	it("should add the numbers in the string correctly and return an integer", () => {
+		expect(add(testCase3)).to.equal(6);
+	});
+	it("should add the numbers in the string correctly and return an integer", () => {
+		expect(add(testCase4)).to.equal(7);
+	});
+
+	it("should add the numbers in the string correctly and return an integer", () => {
+		expect(add(testCase5)).to.equal(6);
+	});
+	it("should add the numbers in the string correctly and return an integer", () => {
+		expect(add(testCase6)).to.equal(13);
+	});
+	it("should add the numbers in the string correctly and return an integer", () => {
+		expect(add(testCase6)).to.equal(13);
 	});
 });

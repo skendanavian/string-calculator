@@ -12,11 +12,10 @@ const addString1 = (string) => {
 		return sum + parseInt(num, 10);
 	}, 0);
 
-	console.log(sum);
 	return sum;
 };
 
-// Part 1 - Add numbers in string using ',' && \n as delimiter .
+// Part 2 - Add numbers in string using ',' && \n as delimiter .
 
 const addString2 = (string) => {
 	// Part 1 - Used string.split(',')
@@ -30,7 +29,6 @@ const addString2 = (string) => {
 		return sum + parseInt(num, 10);
 	}, 0);
 
-	console.log(sum);
 	return sum;
 };
 
@@ -55,4 +53,33 @@ const addString3 = (string) => {
 	return sum;
 };
 
-module.exports = { addString1, addString2, addString3 };
+// Part 4 - Handle all cases
+
+const add = (string) => {
+	if (!string) return 0;
+
+	let delimiter = ",";
+	let numString = string;
+
+	if (string.slice(0, 2) === "//") {
+		const splitDelimiter = string.split("\n");
+
+		//remove formatting before delimiter
+		delimiter = splitDelimiter[0].slice(2);
+
+		//split string into array based on provided delimiter
+		numString = splitDelimiter[1];
+	}
+
+	const numArray = numString.split(delimiter);
+	console.log(numArray);
+
+	const sum = numArray.reduce(function addNumbers(sum, num) {
+		if (typeof num !== "string") return sum + 0;
+		return sum + parseInt(num, 10);
+	}, 0);
+
+	return sum;
+};
+
+module.exports = { addString1, addString2, addString3, add };
