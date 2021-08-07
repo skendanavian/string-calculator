@@ -51,7 +51,7 @@ describe("Part 3 - Custom Delimiter", function () {
 const testCase8 = "//;\n1;-5;-2"; // expect negative number exception
 const testCase9 = "//;\n1;9;-1"; // expect negative number exception
 
-describe("Part 4 - Negative Numbers throw and exception with the list of negatives", function () {
+describe("Part 4 - Negative Numbers throw an exception with the list of negatives", function () {
 	it("should throw the exception: 'Negatives not allowed. The string contained -5, -2'", () => {
 		expect(add(testCase8)).to.equal(
 			"Negatives not allowed. The string contained -5, -2"
